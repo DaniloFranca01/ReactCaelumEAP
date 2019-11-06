@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+  height: 100%;
+  font-family: 'Numans', sans-serif;
+}
+/* Login.js e Cadastro.js */
+body > div{
+  height: 100%;
+}
+body > div > div{
+  height: 100%;
+}
+.login-cadastro{
+  background-image: url('https://raw.githubusercontent.com/gstadtler/CaelumEAP/master/login_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+/* Login.js */
+.container{
+  height: 100%;
+  align-content: center;
+}
+.card{
+  height: 380px;
+  margin-top: 140px;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0,0,0,0.5) !important;
+}
+.alert-messages{
+  color: white;
+  background-color: black;
+  margin-bottom: 5px;
+}
+.social_icon span{
+  font-size: 60px;
+  margin-left: 10px;
+  color: #FFC312;
+}
+.social_icon span:hover{
+  color: white;
+  cursor: pointer;
+}
+.card-header h3{
+  color: white;
+}
+.social_icon{
+  position: absolute;
+  right: 20px;
+  top: -45px;
+}
+.input-group-prepend span{
+  width: 50px;
+  background-color: #FFC312;
+  color: black;
+  border:0 !important;
+}
+input:focus{
+  outline: 0 0 0 0  !important;
+  box-shadow: 0 0 0 0 !important;
+}
+.remember{
+  color: white;
+}
+.remember input{
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+.login_btn{
+  color: black;
+  background-color: #FFC312;
+  width: 100px;
+}
+.login_btn:hover{
+  color: black;
+  background-color: white;
+}
+.links{
+  color: white;
+}
+.links a{
+  margin-left: 4px;
+}
+.links a:hover{
+  background-color: white;
+} 
+
+/* Cadastro.js */
+.card-cadastro{
+  height: 425px;
+  margin-top: 100px;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0,0,0,0.5) !important;
+}
+.cargos{
+  height: 35px;
+}
+
+/* Pacientes.js */
+
+#body-row {
+  margin-left:0;
+  margin-right:0;
+}
+#sidebar-container {
+  min-height: 100vh;   
+  background-color: #333;
+  padding: 0;
+}
+
+/* Sidebar sizes when expanded and expanded */
+.sidebar-expanded {
+  width: 230px;
+}
+.sidebar-collapsed {
+  width: 60px;
+}
+
+/* Menu item*/
+#sidebar-container .list-group a {
+  height: 50px;
+  color: white;
+}
+
+/* Closed submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+content: " \f0d7";
+font-family: FontAwesome;
+display: inline;
+text-align: right;
+padding-left: 10px;
+}
+/* Opened submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+content: " \f0da";
+font-family: FontAwesome;
+display: inline;
+text-align: right;
+padding-left: 10px;
+}
+.dropbtn {
+  background-color: #343a40;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.main-content{
+  margin-left: 50%;
+}
+.responsive-btn{
+  display: none;
+}
+@media screen and (max-width: 500px) {
+  .responsive-btn{
+    display: block;
+    width: 10%;
+    height: auto;
+    position: relative;
+  }
+}
