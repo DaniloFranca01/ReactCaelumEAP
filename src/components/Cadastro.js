@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { isAuthenticated } from './Auth'
 
 export default class Cadastro extends Component {
 	constructor(props){
@@ -15,7 +17,7 @@ export default class Cadastro extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 	}
-	
+
 	handleChange(event){
 		this.setState({
 			[event.target.name]: event.target.value
@@ -37,10 +39,12 @@ export default class Cadastro extends Component {
 
 			)
 			.then(response => {
-				if (response.data.status === 'created'){
-					this.props.handleSuccessfulAuth(response.data);
-				}
-			})
+				isAuthenticated() ? (
+					this.history.push("/welcome")
+				) : (
+					this.history.push("/")
+				)	
+			});
 		event.preventDefault();
 	}
 	render(){
