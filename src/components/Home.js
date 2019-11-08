@@ -1,10 +1,31 @@
-import React, { Component } from "react";
+import React from "react";
 import axios from "axios";
-
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Cadastro from "./Cadastro";
 import Login from "./Login";
 
-export default class Home extends Component {
+class NavigationComponent extends React.Component {
+  render() {
+    return (
+			<div>
+				<h1>CaelumEAP</h1>
+				<h1>Status: {this.props.loggedInStatus}</h1>
+				<ul>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/cadastro">Cadastrar</Link>
+          </li>
+        </ul>
+        <hr />
+				<button onClick={() => this.handleLogoutClick()}>Logout</button>
+			</div>
+    );
+  }
+}
+
+export default class Home extends React.Component {
   constructor(props) {
     super(props);
 
@@ -26,17 +47,35 @@ export default class Home extends Component {
       .catch(error => {
         console.log("logout error", error);
       });
-  }
-
+	}
+	
   render() {
     return (
-      <div>
-        <h1>CaelumEAP</h1>
-        <h1>Status: {this.props.loggedInStatus}</h1>
-        <button onClick={() => this.handleLogoutClick()}>Logout</button>
-        <Cadastro handleSuccessfulAuth={this.handleSuccessfulAuth} />
-        <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
-      </div>
+			<Router>
+				<React.Fragment>
+					<NavigationComponent />
+					<Route
+						exact
+						path={"/cadastro"}
+						render={props => (
+							<Cadastro
+								{...props}
+								handleSuccessfulAuth={this.handleSuccessfulAuth}
+							/>
+						)}
+					/>
+					<Route
+						exact
+						path={"/login"}
+						render={props => (
+							<Login
+								{...props}
+								handleSuccessfulAuth={this.handleSuccessfulAuth}
+							/>
+						)}
+					/>
+				</React.Fragment>
+			</Router>
     );
   }
 }

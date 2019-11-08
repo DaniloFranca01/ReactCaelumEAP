@@ -69,7 +69,7 @@ export default class App extends Component {
       <div className="app">
         <Router>
           <Switch>
-          <Route
+            <Route
                 exact
                 path={"/"}
                 render={props => (
@@ -80,7 +80,7 @@ export default class App extends Component {
                     loggedInStatus={this.state.loggedInStatus}
                   />
                 )}
-              />
+              />  
             <PrivateRoute exact path={"/dashboard"} component={Dashboard} />
           </Switch>
         </Router>
