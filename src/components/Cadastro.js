@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { isAuthenticated } from './Auth'
 
 export default class Cadastro extends Component {
 	constructor(props){
@@ -39,16 +37,17 @@ export default class Cadastro extends Component {
 
 			)
 			.then(response => {
-				isAuthenticated() ? (
-					this.history.push("/welcome")
-				) : (
-					this.history.push("/")
-				)	
-			});
-		event.preventDefault();
+        if (response.data.status === "created") {
+          this.props.handleSuccessfulAuth(response.data);
+        }
+      })
+      .catch(error => {
+        console.log("registration error", error);
+      });
+    event.preventDefault();
 	}
-	render(){
-		return(
+	render() {
+		return (
 			<div className="login-cadastro">
 				<React.Fragment>
 					<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossOrigin="anonymous"/>
@@ -120,6 +119,6 @@ export default class Cadastro extends Component {
 					</div>
 				</div>
 			</div>
-		)
+		);
 	}
 }
