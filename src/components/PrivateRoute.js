@@ -1,17 +1,17 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, withRouter } from 'react-router-dom';
 import { isAuthenticated } from './Auth';
 
-const PrivateRoute = ({component: Component, ...rest}) => {
-	return (
+const PrivateRoute = ({ component: Component, handleLogout, ...rest }) => {
+  return (
     <Route {...rest} render={props => (
-        isAuthenticated() ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to={{ pathname: '/', state: { from : props.location } }} />
+      isAuthenticated() ? (
+        <Component {...props} handleLogout={handleLogout} />
+      ) : (
+          <Redirect to={{ pathname: '/', state: { from: props.location } }} />
         )
     )} />
   );
 };
 
-export default PrivateRoute;
+export default withRouter(PrivateRoute);
