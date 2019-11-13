@@ -12,7 +12,7 @@ export default class Dashboard extends Component {
 
 	handleLogoutClick() {
 		axios
-			.delete("http://localhost:3001/logout", { withCredentials: true })
+			.delete(BASE_API+"logout", { withCredentials: true })
 			.then(response => {
 				this.props.handleLogout();
 			})

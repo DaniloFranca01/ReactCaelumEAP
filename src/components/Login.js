@@ -25,7 +25,7 @@ class Login extends Component {
 	handleSubmit(event) {
 		const { email, password } = this.state;
 		axios
-			.post("http://localhost:3001/sessions",
+			.post(BASE_API+"sessions",
 				{
 					user: {
 						email: email,

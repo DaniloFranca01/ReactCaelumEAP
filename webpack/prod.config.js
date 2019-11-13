@@ -92,6 +92,7 @@ module.exports = webpackMerge(webpackCommon, {
       exclude: ".gitignore"
     }),
     new DefinePlugin({
+      BASE_API: JSON.stringify('https://api-caelum-eap.herokuapp.com/'),
       "process.env": {
         NODE_ENV: '"production"'
       }
