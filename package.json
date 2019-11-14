@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/bottega-code-school/js-builder/issues"
   },
-  "homepage": "https://github.com/bottega-code-school/js-builder",
+  "homepage": ".",
   "dependencies": {
     "@trendmicro/react-sidenav": "^0.4.5",
     "ajv": "^5.5.2",
