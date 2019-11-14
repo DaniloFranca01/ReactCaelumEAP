@@ -23,7 +23,7 @@ class App extends Component {
 
   checkLoginStatus() {
     axios
-      .get(BASE_API+"logged_in", { withCredentials: true })
+      .get(process.env.BASE_API+"logged_in", { withCredentials: true })
       .then(response => {
         if (
           response.data.logged_in &&
