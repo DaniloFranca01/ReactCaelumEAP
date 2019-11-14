@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import axios from "axios";
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
 	constructor(props) {
 		super(props);
 
@@ -12,7 +13,7 @@ export default class Dashboard extends Component {
 
 	handleLogoutClick() {
 		axios
-			.delete(BASE_API+"logout", { withCredentials: true })
+			.delete(process.env.BASE_API+"logout", { withCredentials: true })
 			.then(response => {
 				this.props.handleLogout();
 			})
@@ -63,3 +64,4 @@ export default class Dashboard extends Component {
 		)
 	}
 }
+export default withRouter(Dashboard);

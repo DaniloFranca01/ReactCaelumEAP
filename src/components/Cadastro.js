@@ -26,7 +26,7 @@ class Cadastro extends Component {
 	handleSubmit(event){
 		const { email, password, password_confirmation } = this.state;
 		axios
-			.post(BASE_API+"registrations",
+			.post(process.env.BASE_API+"registrations",
 			{
 				user: {
 					email: email,
