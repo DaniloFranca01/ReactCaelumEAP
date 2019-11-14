@@ -1,7 +1,5 @@
 {
-  "root": "static/",
-  "clean_urls": false,
   "routes": {
-    "/**": "index.html"
+    "/**": "dist/index.html"
   }
 }
