@@ -44,7 +44,7 @@ class App extends Component {
         }
       })
       .catch(error => {
-        console.log("check login error", error);
+        console.log("check login error!", error);
       });
   }
   componentDidMount() {
