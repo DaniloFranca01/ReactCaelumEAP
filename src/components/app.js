@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link, withRouter } from 'react-router-dom';
+import { Route, Link, withRouter, Switch } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import Cadastro from './Cadastro';
@@ -23,7 +23,7 @@ class App extends Component {
 
   checkLoginStatus() {
     axios
-      .get(process.env.BASE_API+"logged_in", { withCredentials: true })
+      .get(process.env.BASE_API + "logged_in", { withCredentials: true })
       .then(response => {
         if (
           response.data.logged_in &&
@@ -74,41 +74,43 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route
-          exact
-          path={"/"}
-          render={props => (
-            <Home
-              {...props}
-            />
-          )}
-        />
-        <Route
-          exact
-          path={"/login"}
-          render={props => (
-            <Login
-              {...props}
-              handleSuccessfulAuth={this.handleSuccessfulAuth}
-            />
-          )}
-        />
-        <Route
-          exact
-          path={"/cadastro"}
-          render={props => (
-            <Cadastro
-              {...props}
-              handleSuccessfulAuth={this.handleSuccessfulAuth}
-            />
-          )}
-        />
-        <PrivateRoute
-          exact
-          path={"/dashboard"}
-          component={Dashboard}
-          handleLogout={this.handleLogout}
-        />
+        <Switch>
+          <Route
+            exact
+            path={"/"}
+            render={props => (
+              <Home
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path={"/login"}
+            render={props => (
+              <Login
+                {...props}
+                handleSuccessfulAuth={this.handleSuccessfulAuth}
+              />
+            )}
+          />
+          <Route
+            exact
+            path={"/cadastro"}
+            render={props => (
+              <Cadastro
+                {...props}
+                handleSuccessfulAuth={this.handleSuccessfulAuth}
+              />
+            )}
+          />
+          <PrivateRoute
+            exact
+            path={"/dashboard"}
+            component={Dashboard}
+            handleLogout={this.handleLogout}
+          />
+        </Switch>
       </div>
     );
   }
