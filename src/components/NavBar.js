@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-
-class Dashboard extends Component {
+class NavBar extends Component {
 	constructor(props) {
 		super(props);
 
@@ -12,7 +11,7 @@ class Dashboard extends Component {
 
 	handleLogoutClick() {
 		axios
-			.delete(process.env.BASE_API+"logout", { withCredentials: true })
+			.delete(process.env.BASE_API + "logout", { withCredentials: true })
 			.then(response => {
 				this.props.handleLogout();
 			})
@@ -25,7 +24,7 @@ class Dashboard extends Component {
 			<div>
 				<React.Fragment>
 					<meta charSet="utf-8" />
-    			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+					<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 					<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossOrigin="anonymous" />
 				</React.Fragment>
 				<nav className="navbar navbar-expand-lg navbar-light menu-default">
@@ -44,18 +43,17 @@ class Dashboard extends Component {
 						</ul>
 						<ul className="navbar-nav ml-auto">
 							<li>
-							<div className="dropdown">
-								<button className="dropbtn">{/*this.state.user.nome*/}User</button>
-								<div className="dropdown-content">
-									<Link to="/">Editar Perfil</Link>
-									<button onClick={() => this.handleLogoutClick()}>Logout</button>
+								<div className="dropdown">
+									<button className="dropbtn">{/*this.state.user.nome*/}User</button>
+									<div className="dropdown-content">
+										<Link to="/">Editar Perfil</Link>
+										<button onClick={() => this.handleLogoutClick()}>Logout</button>
+									</div>
 								</div>
-							</div>
 							</li>
 						</ul>
 					</div>
 				</nav>
-				
 				<React.Fragment>
 					<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous"></script>
 					<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossOrigin="anonymous"></script>
@@ -65,4 +63,4 @@ class Dashboard extends Component {
 		)
 	}
 }
-export default withRouter(Dashboard);
+export default NavBar;

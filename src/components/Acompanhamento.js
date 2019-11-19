@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
+import NavBar from './NavBar';
 
-class Acompanhamento extends Component{
-  render(){
-		return(
+class Acompanhamento extends Component {
+	render() {
+		return (
 			<div>
-				ninja non paga de santo
+				<NavBar handleLogout={this.props.handleLogout} />
+				<div>
+					ninja non paga de santo
+			</div>
 			</div>
 		)
 	}
