@@ -5,6 +5,9 @@ import Login from './Login';
 import Cadastro from './Cadastro';
 import PrivateRoute from './PrivateRoute';
 import Dashboard from './Dashboard';
+import Pacientes from './Pacientes';
+import Acompanhamento from './Acompanhamento';
+import CadastroPacientes from './Pacientes_cadastro';
 import axios from 'axios';
 
 class App extends Component {
@@ -15,7 +18,7 @@ class App extends Component {
       loggedInStatus: "NOT_LOGGED_IN",
       user: {}
     };
-
+    this.handlePacientes = this.handlePacientes.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
@@ -68,7 +71,11 @@ class App extends Component {
 
   handleSuccessfulAuth(data) {
     this.handleLogin(data);
-    this.props.history.push('/dashboard');
+    this.props.history.push('/pacientes');
+  }
+
+  handlePacientes() {
+    this.props.history.push('/pacientes');
   }
 
   render() {
@@ -108,6 +115,24 @@ class App extends Component {
             exact
             path={"/dashboard"}
             component={Dashboard}
+            handleLogout={this.handleLogout}
+          />
+          <PrivateRoute
+            exact
+            path={"/pacientes"}
+            component={Pacientes}
+            handleLogout={this.handleLogout}
+          />
+          <PrivateRoute
+            exact
+            path={"/cadastro-pacientes"}
+            component={CadastroPacientes}
+            handlePacientes={this.handlePacientes}
+          />
+          <PrivateRoute
+            exact
+            path={"/acompanhamento"}
+            component={Acompanhamento}
             handleLogout={this.handleLogout}
           />
         </Switch>
