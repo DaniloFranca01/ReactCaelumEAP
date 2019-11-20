@@ -27,7 +27,7 @@ class Pacientes extends Component {
 
 	async componentDidMount() {
 		const {data} = await axios.get(process.env.BASE_API + "pacientes")
-		this.setState({ pacientes: [data] })
+		this.setState({ pacientes: data })
 	}
 
 	render() {
