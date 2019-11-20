@@ -19,7 +19,7 @@ class Pacientes extends Component {
 		axios
 			.get(process.env.BASE_API+"pacientes")
 			.then((response) => { return response.json() })
-      .then((data) => {this.setState({ pacientes: data }) });
+			.then((data) => { this.setState({ pacientes: data }) });
 	}
 
 	handleAvaliarClick() {
@@ -31,37 +31,42 @@ class Pacientes extends Component {
 	}
 
 	componentDidMount() {
-		this.getPaciente;
+		this.getPaciente();
 	}
 	render() {
 		return (
-			<div>
+			<div className="pacientes">
+				<React.Fragment>
+					<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossOrigin="anonymous" />
+				</React.Fragment>
 				<NavBar handleLogout={this.props.handleLogout} />
 				<div className="tabela-pacientes">
-					<table className="table">
+					<table className="table table-hover table-dark">
 						<thead className="table-header">
 							<tr>
-								<th scope="col">CPF</th>
-								<th scope="col">NOME</th>
-								<th scope="col">IDADE</th>
-								<th scope="col">GENERO</th>
-								<th scope="col">HIP DIAGNOSTICA</th>
-								<th scope="col">ACÕES</th>
+								<th scope="col">Cpf</th>
+								<th scope="col">Nome</th>
+								<th scope="col">Idade</th>
+								<th scope="col">Gênero</th>
+								<th scope="col">Hip Diagnóstica</th>
+								<th scope="col">Ações</th>
 							</tr>
 						</thead>
 						<tbody>
-							{this.state.pacientes.map((paciente) => 
+							{this.state.pacientes.map((paciente) =>
 								<tr key={paciente.id}>
-									<td>{paciente.cpf}</td>
-									<td>{paciente.nome}</td>
-									<td>{paciente.idade}</td>
-									<td>{paciente.genero}</td>
-									<td>{paciente.hip_diag}</td>
+									<td scope="row">{paciente.cpf}</td>
+									<td scope="row">{paciente.nome}</td>
+									<td scope="row">{paciente.idade}</td>
+									<td scope="row">{paciente.genero}</td>
+									<td scope="row">{paciente.hip_diag}</td>
 								</tr>
 							)}
 							<tr>
-								<td><button onClick={() => this.handleAvaliarClick()}>Avaliar</button></td>
-								<td><button onClick={() => this.handleDarAltaClick()}>Dar alta</button></td>
+								<td>
+									<button onClick={() => this.handleAvaliarClick()}><i className="fas fa-file-medical"></i></button>
+									<button onClick={() => this.handleDarAltaClick()}><i className="fas fa-trash-alt"></i></button>
+								</td>
 							</tr>
 						</tbody>
 					</table>
