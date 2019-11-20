@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import NavBar from './NavBar';
@@ -7,7 +7,8 @@ class Pacientes extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			pacientes: []
+			pacientes: [],
+			paciente: {}
 		};
 
 		this.handleAvaliarClick = this.handleAvaliarClick.bind(this);
@@ -24,15 +25,14 @@ class Pacientes extends Component {
 
 	}
 
-	componentDidMount() {
-		axios.get(process.env.BASE_API + "pacientes").then(response => {
-			const pacientes = response.data;
-			this.setState({ pacientes });
-		})
+	async componentDidMount() {
+		const {data} = await axios.get(process.env.BASE_API + "pacientes")
+		this.setState({ pacientes: [data] })
 	}
+
 	render() {
 		return (
-			<div>
+			<Fragment>
 				<NavBar handleLogout={this.props.handleLogout} />
 				<div className="tabela-pacientes">
 					<table className="table">
@@ -63,7 +63,7 @@ class Pacientes extends Component {
 						</tbody>
 					</table>
 				</div>
-			</div>
+			</Fragment>
 		)
 	}
 }
