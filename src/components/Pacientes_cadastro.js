@@ -104,6 +104,7 @@ class CadastroPacientes extends Component {
 						<div className="form-group row">
 							<div className="col-8 input-group">
 								<select name="genero" value={this.state.genero} onChange={this.handleChange} className="form-control genero_options" required>
+									<option>Informe o gênero do paciente</option>
 									<option value="feminino">Feminino</option>
 									<option value="masculino">Masculino</option>
 								</select>

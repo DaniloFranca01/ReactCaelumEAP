@@ -16,13 +16,21 @@ class Pacientes extends Component {
 	}
 
 
-	handleAvaliarClick() {
+	handleAvaliarClick(id) {
 		this.props.history.push('/acompanhamento');
 	}
 
-	handleDarAltaClick() {
-
-	}
+	handleDarAltaClick(id) {
+		axios
+			.delete(process.env.BASE_API + "pacientes/"+id)
+			.then(res => {
+				this.setState(previousState => {
+					return {
+						pacientes: previousState.pacientes.filter(p => p.id !== id)
+					};
+				});
+			})	
+	};
 
 	async componentDidMount() {
 		const { data } = await axios.get(process.env.BASE_API + "pacientes")
@@ -39,7 +47,7 @@ class Pacientes extends Component {
 						<table className="table table-hover table-dark">
 							<thead className="table-header">
 								<tr>
-									<th scope="col">Cpf</th>
+									<th scope="col">CPF</th>
 									<th scope="col">Nome</th>
 									<th scope="col">Idade</th>
 									<th scope="col">Gênero</th>
@@ -55,14 +63,12 @@ class Pacientes extends Component {
 										<td scope="row">{paciente.idade}</td>
 										<td scope="row">{paciente.genero}</td>
 										<td scope="row">{paciente.hip_diag}</td>
+										<td scope="row">
+											<button onClick={() => this.handleAvaliarClick(paciente.id)}><i className="fas fa-file-medical"></i></button>
+											<button className="btn-alta" onClick={() => this.handleDarAltaClick(paciente.id)}><i className="fas fa-trash-alt"></i></button>
+										</td>
 									</tr>
 								)}
-								<tr>
-									<td>
-										<button onClick={() => this.handleAvaliarClick()}><i className="fas fa-file-medical"></i></button>
-										<button onClick={() => this.handleDarAltaClick()}><i className="fas fa-trash-alt"></i></button>
-									</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>

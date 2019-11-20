@@ -39,6 +39,9 @@ class Login extends Component {
 				if (response.data.logged_in) {
 					this.props.handleSuccessfulAuth(response.data);
 				}
+				else {
+					this.state.login_erros = "Usuário não está cadastrado"
+				}
 			})
 			.catch(error => {
 				console.log("registration error", error);
@@ -59,6 +62,7 @@ class Login extends Component {
 							<div className="card-header">
 								<h3>Sign In</h3>
 							</div>
+							{/*<div>{this.state.login_erros}</div>*/}
 							<div className="card-body">
 								<form onSubmit={this.handleSubmit}>
 									<div className="input-group form-group">

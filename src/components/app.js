@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import Cadastro from './Cadastro';
-import PrivateRoute from './PrivateRoute';
+//import PrivateRoute from './PrivateRoute';
 import axios from 'axios';
 import Pacientes from './Pacientes';
 import Acompanhamento from './Acompanhamento';
@@ -17,12 +17,18 @@ class App extends Component {
       loggedInStatus: "NOT_LOGGED_IN",
       user: {}
     };
+
     this.handlePacientes = this.handlePacientes.bind(this);
+    //this.getPacienteInfo = this.getPacienteInfo.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
   }
-
+  /*
+  getPacienteInfo(){
+    this.props.paciente;
+  }
+  */
   checkLoginStatus() {
     axios
       .get(process.env.BASE_API + "logged_in", { withCredentials: true })
@@ -138,6 +144,7 @@ class App extends Component {
               <Acompanhamento
                 {...props}
                 handleLogout={this.handleLogout}
+                //getPacienteInfo={this.getPacienteInfo}
               />
             )}
           />
