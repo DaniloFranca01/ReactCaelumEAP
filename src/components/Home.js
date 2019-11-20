@@ -8,18 +8,11 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        <div className="home-content">
-          <h1>CaelumEAP</h1>
-          <br />
-          <h2>Seja Bem-vindo à Plataforma CaelumEAP!</h2>
-          <ul>
-            <li>
-              <Link to="/login">Já é registrado? Faça Login!</Link>
-            </li>
-            <li>
-              <Link to="/cadastro">Cadastre-se já!</Link>
-            </li>
-          </ul>
+        <div className="btn-login">
+          <button className="home-btn"><Link to="/login">Faça Login</Link></button>
+        </div>
+        <div className="btn-cadastro">
+          <button className="home-btn"><Link to="/cadastro">Cadastre-se</Link></button>
         </div>
       </div>
     );

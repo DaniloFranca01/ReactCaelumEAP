@@ -55,7 +55,7 @@ class CadastroPacientes extends Component {
 	}
 	render() {
 		return (
-			<div className="pacientes-cadastro">
+			<div className="pacientes">
 				<NavBar handleLogout={this.props.handleLogout} />
 				<div className="formulario">
 					<form onSubmit={this.handleSubmit}>

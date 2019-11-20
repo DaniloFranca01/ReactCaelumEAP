@@ -13,14 +13,28 @@ body > div > div{
 }
 /* Home.js */
 .home{
-  background-image: url(../background.png);
+  background-image: url(../bg-home.png);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
 }
-.home-content{
+.btn-login{
   color: white;
+  text-align: left;
+  padding-top: 280px;
+  margin-left: 170px;
 }
+.btn-cadastro{
+  color: white;
+  text-align: left;
+  padding-top: 30px;
+  margin-left: 163px;
+}
+.home-btn{
+  border-radius: 12px;
+  background-color: #fff;
+}
+
 /* Login.js e Cadastro.js */
 
 .login-cadastro{
@@ -98,7 +112,7 @@ input:focus{
 /* Dashboard.js */
 .menu-default{
   color: white;
-  background-color: orange;
+  background-color: #F4A460;
 }
 .dropbtn {
   background-color: #343a40;
@@ -129,7 +143,7 @@ input:focus{
 }
 .dropdown-content a:hover {background-color: #ddd;}
 .dropdown:hover .dropdown-content {display: block;}
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #F4A460;}
 
 /* Cadastro.js */
 .card-cadastro{
@@ -172,12 +186,20 @@ input:focus{
 }
 .cadastrar_btn{
   color: black;
-  background-color: #FFC312;
+  background-color: #F4A460;
   width: 130px;
   margin-left: 260px;
   margin-top: 25px;
-  
 }
+/*
+.pacientes{
+  background-image: url(../caelum-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+*/
+
 /* Pacientes.js */
 .tabela-pacientes{
   margin-top: 40px;
