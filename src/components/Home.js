@@ -10,12 +10,14 @@ class Home extends React.Component {
       <div className="home">
         <div className="home-content">
           <h1>CaelumEAP</h1>
+          <br />
+          <h2>Seja Bem-vindo à Plataforma CaelumEAP!</h2>
           <ul>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login">Já é registrado? Faça Login!</Link>
             </li>
             <li>
-              <Link to="/cadastro">Cadastrar</Link>
+              <Link to="/cadastro">Cadastre-se já!</Link>
             </li>
           </ul>
         </div>

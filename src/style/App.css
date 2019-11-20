@@ -18,6 +18,9 @@ body > div > div{
   background-repeat: no-repeat;
   height: 100%;
 }
+.home-content{
+  color: white;
+}
 /* Login.js e Cadastro.js */
 
 .login-cadastro{

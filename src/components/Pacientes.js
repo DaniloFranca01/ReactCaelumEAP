@@ -17,12 +17,9 @@ class Pacientes extends Component {
 
 	getPaciente() {
 		axios
-			.get(process.env.BASE_API + "pacientes")
-			.then(response => {
-				this.setState({
-					pacientes: response.data
-				});
-			})
+			.get(process.env.BASE_API+"pacientes")
+			.then((response) => { return response.json() })
+      .then((data) => {this.setState({ pacientes: data }) });
 	}
 
 	handleAvaliarClick() {
@@ -34,7 +31,7 @@ class Pacientes extends Component {
 	}
 
 	componentDidMount() {
-		this.getPaciente();
+		this.getPaciente;
 	}
 	render() {
 		return (
@@ -53,8 +50,8 @@ class Pacientes extends Component {
 							</tr>
 						</thead>
 						<tbody>
-							{this.state.pacientes.map((paciente) =>
-								<tr>
+							{this.state.pacientes.map((paciente) => 
+								<tr key={paciente.id}>
 									<td>{paciente.cpf}</td>
 									<td>{paciente.nome}</td>
 									<td>{paciente.idade}</td>
