@@ -16,8 +16,8 @@ class Pacientes extends Component {
 	}
 
 
-	handleAvaliarClick(id) {
-		this.props.history.push('/acompanhamento');
+	handleAvaliarClick() {
+		this.props.history.push("/acompanhamento")
 	}
 
 	handleDarAltaClick(id) {
@@ -64,7 +64,7 @@ class Pacientes extends Component {
 										<td scope="row">{paciente.genero}</td>
 										<td scope="row">{paciente.hip_diag}</td>
 										<td scope="row">
-											<button onClick={() => this.handleAvaliarClick(paciente.id)}><i className="fas fa-file-medical"></i></button>
+											<button onClick={() => this.handleAvaliarClick()}><i className="fas fa-file-medical"></i></button>
 											<button className="btn-alta" onClick={() => this.handleDarAltaClick(paciente.id)}><i className="fas fa-trash-alt"></i></button>
 										</td>
 									</tr>

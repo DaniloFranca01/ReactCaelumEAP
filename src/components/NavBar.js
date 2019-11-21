@@ -35,9 +35,6 @@ class NavBar extends Component {
 					<div className="collapse navbar-collapse menu-default">
 						<ul className="navbar-nav">
 							<li className="nav-item active">
-								<a className="nav-link" href="#">Acompanhar</a>
-							</li>
-							<li className="nav-item active">
 								<Link to="/cadastro-pacientes" className="nav-link">Cadastrar Pacientes</Link>
 							</li>
 						</ul>

@@ -1,81 +1,38 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { withRouter } from "react-router-dom";
+import Escala1 from './Escala1';
+import Escala2 from './Escala2';
+import Escala3 from './Escala3';
 
-export default class Escalas extends Component {
-	constructor(props) {
+class Escalas extends Component{
+	constructor(props){
 		super(props);
-		this.state = {
-			escalas: [],
-			escala: {},
-			parametros: [],
-			parametro: {},
-			parametros: [],
-			parametro: {},
-			interpretacoes: [],
-			interpretacao: {}
-		};
 
-		this.getEscala = this.getEscala.bind(this);
-		this.getEscalaParametro = this.getEscalaParametro.bind(this);
-		//this.getEscalaResposta = this.getEscalaResposta.bind(this);
-		//this.getEscalainterpretacao = this.getEscalainterpretacao.bind(this);
+		this.handleEscalas = this.handleEscalas.bind(this);
 	}
 
-	async getEscala() {
-		const { data } = await axios.get(process.env.BASE_API + "escalas")
-		this.setState({ escalas: data })
-	}
-
-	async getEscalaParametro(id_escala) {
-		const { data } = await axios.get(process.env.BASE_API + "escalas/"+id_escala+"/parametros")
-		this.setState({ parametros: data })
-
-	}
-	/*
-	async getEscalaResposta() {
-		const { data } = await axios.get(process.env.BASE_API + "escalas/1/parametros/7/respostas")
-		this.setState({ parametros: data })
-	}
-	
-	async getEscalainterpretacao() {
-		const { data } = await axios.get(process.env.BASE_API + "escalas/2/interpretacoes")
-		this.setState({ interpretacoes: data })
-	}
-	*/
-	componentDidMount() {
-		this.getEscala();
-		this.getEscalaParametro();
-		//this.getEscalaResposta();
-		//this.getEscalainterpretacao();
+	handleEscalas(id){
+		if (id == 1){
+			return <Escala1 />
+		}
+		else if(id == 2){
+			return <Escala2 />
+		}
+		else {
+			return <Escala3 />
+		}
+		
 	}
 
 	render() {
 		return (
 			<div>
-				<form>
-					<div className="abertura-ocular">
-						<table className="table table-sm">
-							<thead className="table-header">
-								<tr>
-									<th scope="col">parametro</th>
-								</tr>
-							</thead>
-							<tbody>
-								{this.state.escalas.map(escala =>
-									<tr key={escala.id}>
-										<td scope="row">{escala.nome}</td>
-										<td>
-											<button onClick={() => this.handleAvaliarClick(parametro.id)}><i className="fas fa-file-medical"></i></button>
-											<button className="btn-alta" onClick={() => this.handleDarAltaClick(parametro.id)}><i className="fas fa-trash-alt"></i></button>
-										</td>
-									</tr>
-								)}
-							</tbody>
-						</table>
-					</div>
-				</form >
+				<Escala1 />
+				<Escala2 />
+				<Escala3 />
 			</div >
 		)
 	}
 }
 
+export default withRouter(Escalas);

@@ -211,3 +211,17 @@ input:focus{
   margin-left: 10px;
 }
 
+/* Acompanhamento.js */
+.dados-paciente{
+  margin-top: 50px;
+  width: 50%;
+  text-align: center;
+  margin-left: 25%;
+}
+
+.escala-table{
+  margin-top: 100px;
+  width: 75%;
+  text-align: center;
+  margin-left: 15%;
+}

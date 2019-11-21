@@ -8,6 +8,7 @@ import axios from 'axios';
 import Pacientes from './Pacientes';
 import Acompanhamento from './Acompanhamento';
 import CadastroPacientes from './Pacientes_cadastro';
+import Escalas from './Escalas';
 
 class App extends Component {
   constructor(props) {
@@ -142,6 +143,17 @@ class App extends Component {
             path={"/acompanhamento"}
             render={props => (
               <Acompanhamento
+                {...props}
+                handleLogout={this.handleLogout}
+                //getPacienteInfo={this.getPacienteInfo}
+              />
+            )}
+          />
+          <Route
+            exact
+            path={"/escalas"}
+            render={props => (
+              <Escalas
                 {...props}
                 handleLogout={this.handleLogout}
                 //getPacienteInfo={this.getPacienteInfo}
