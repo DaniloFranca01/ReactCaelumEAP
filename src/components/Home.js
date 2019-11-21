@@ -7,16 +7,13 @@ class Home extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h1>CaelumEAP</h1>
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/cadastro">Cadastrar</Link>
-          </li>
-        </ul>
+      <div className="home">
+        <div className="btn-login">
+          <button className="home-btn"><Link to="/login">Faça Login</Link></button>
+        </div>
+        <div className="btn-cadastro">
+          <button className="home-btn"><Link to="/cadastro">Cadastre-se</Link></button>
+        </div>
       </div>
     );
   }

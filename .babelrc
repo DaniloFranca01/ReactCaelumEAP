@@ -4,6 +4,9 @@
     "react"
   ],
   "plugins": [
+    ["transform-runtime", {
+      "regenerator": true
+    }],
     "babel-plugin-transform-class-properties",
     "babel-plugin-transform-object-rest-spread"
   ]

@@ -1,11 +1,14 @@
-import React, { Component } from "react";
-import { Route, Link, withRouter, Switch } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import Cadastro from './Cadastro';
-import PrivateRoute from './PrivateRoute';
-import Dashboard from './Dashboard';
+//import PrivateRoute from './PrivateRoute';
 import axios from 'axios';
+import Pacientes from './Pacientes';
+import Acompanhamento from './Acompanhamento';
+import CadastroPacientes from './Pacientes_cadastro';
+import Escalas from './Escalas';
 
 class App extends Component {
   constructor(props) {
@@ -16,11 +19,17 @@ class App extends Component {
       user: {}
     };
 
+    this.handlePacientes = this.handlePacientes.bind(this);
+    //this.getPacienteInfo = this.getPacienteInfo.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
   }
-
+  /*
+  getPacienteInfo(){
+    this.props.paciente;
+  }
+  */
   checkLoginStatus() {
     axios
       .get(process.env.BASE_API + "logged_in", { withCredentials: true })
@@ -68,7 +77,11 @@ class App extends Component {
 
   handleSuccessfulAuth(data) {
     this.handleLogin(data);
-    this.props.history.push('/dashboard');
+    this.props.history.push('/pacientes');
+  }
+
+  handlePacientes() {
+    this.props.history.push('/pacientes');
   }
 
   render() {
@@ -104,11 +117,48 @@ class App extends Component {
               />
             )}
           />
-          <PrivateRoute
+          <Route
             exact
-            path={"/dashboard"}
-            component={Dashboard}
-            handleLogout={this.handleLogout}
+            path={"/pacientes"}
+            render={props => (
+              <Pacientes
+                {...props}
+                handleLogout={this.handleLogout}
+              />
+            )}
+          />
+          <Route
+            exact
+            path={"/cadastro-pacientes"}
+            render={props => (
+              <CadastroPacientes
+                {...props}
+                handleLogout={this.handleLogout}
+                handlePacientes={this.handlePacientes}
+              />
+            )}
+          />
+          <Route
+            exact
+            path={"/acompanhamento"}
+            render={props => (
+              <Acompanhamento
+                {...props}
+                handleLogout={this.handleLogout}
+                //getPacienteInfo={this.getPacienteInfo}
+              />
+            )}
+          />
+          <Route
+            exact
+            path={"/escalas"}
+            render={props => (
+              <Escalas
+                {...props}
+                handleLogout={this.handleLogout}
+                //getPacienteInfo={this.getPacienteInfo}
+              />
+            )}
           />
         </Switch>
       </div>

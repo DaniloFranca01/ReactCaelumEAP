@@ -14,4 +14,4 @@ const PrivateRoute = ({ component: Component, handleLogout, ...rest }) => {
   );
 };
 
-export default withRouter(PrivateRoute);
+export default withRouter(PrivateRoute)
